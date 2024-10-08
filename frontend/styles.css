@@ -1,0 +1,26 @@
+/* Simple styling to improve the appearance */
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.error {
+    color: red;
+    display: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: left;
+}
