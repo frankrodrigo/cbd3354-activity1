@@ -2,7 +2,7 @@ const form = document.getElementById('userForm');
 const tableBody = document.querySelector('#userTable tbody');
 
 // Update the URL to use the backend service name
-const backendUrl = 'http://34.134.154.5:5000';  // Use the name of the backend service
+const backendUrl = 'http://34.134.154.5:5000'; 
 
 form.addEventListener('submit', async (event) => {
     event.preventDefault();

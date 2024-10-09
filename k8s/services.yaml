@@ -10,8 +10,6 @@ spec:
   selector:
     app: backend
 
-
-
 ---
 apiVersion: v1
 kind: Service
