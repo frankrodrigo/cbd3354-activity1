@@ -59,5 +59,6 @@ spec:
       containers:
         - name: frontend
           image: gcr.io/cbd3354-435500/frontend:v1.1  # Updated with GCR image
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
