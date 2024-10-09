@@ -1,4 +1,4 @@
 FROM nginx:alpine
 
-# Copy the static files to NGINX
-COPY index.html /usr/share/nginx/html/index.html
+# Copy all files from the current directory to NGINX
+COPY . /usr/share/nginx/html/

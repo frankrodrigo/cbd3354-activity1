@@ -1,15 +1,16 @@
 from flask import Flask, request, jsonify
 import pyodbc
 from flask_cors import CORS
+import os
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS to allow frontend requests
 
 # Database connection details
-server = '34.44.131.30'
-database = 'db1'
-username = 'dbuser1'
-password = 'dbuser1'
+server = os.getenv('DB_HOST')  # Use a default value if the variable is not set
+database = os.getenv('DB_NAME')
+username = os.getenv('DB_USER')
+password = os.getenv('DB_PASS')
 
 def get_db_connection():
     conn_str = f'DRIVER={{ODBC Driver 17 for SQL Server}};SERVER={server};DATABASE={database};UID={username};PWD={password}'
@@ -25,6 +26,7 @@ def add_user():
     if not username or not cellphone:
         return jsonify({'error': 'Missing data'}), 400
 
+    conn = None  # Initialize conn to avoid UnboundLocalError
     try:
         conn = get_db_connection()
         cursor = conn.cursor()
@@ -34,10 +36,12 @@ def add_user():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
     finally:
-        conn.close()
+        if conn:  # Ensure conn is closed if it was opened
+            conn.close()
 
 @app.route('/users', methods=['GET'])
 def get_users():
+    conn = None  # Initialize conn to avoid UnboundLocalError
     try:
         conn = get_db_connection()
         cursor = conn.cursor()
@@ -48,7 +52,23 @@ def get_users():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
     finally:
-        conn.close()
+        if conn:  # Ensure conn is closed if it was opened
+            conn.close()
+
+@app.route('/delete_users', methods=['DELETE'])
+def delete_users():
+    conn = None  # Initialize conn to avoid UnboundLocalError
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute("DELETE FROM users")  # Delete all users
+        conn.commit()
+        return jsonify({'message': 'All users deleted successfully'}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+    finally:
+        if conn:  # Ensure conn is closed if it was opened
+            conn.close()
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000)  # Run on all interfaces
