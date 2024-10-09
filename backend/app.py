@@ -7,10 +7,10 @@ app = Flask(__name__)
 CORS(app)  # Enable CORS to allow frontend requests
 
 # Database connection details
-server = os.getenv('DB_HOST', '34.44.131.30')  # Use a default value if the variable is not set
-database = os.getenv('DB_NAME', 'db1')
-username = os.getenv('DB_USER', 'dbuser1')
-password = os.getenv('DB_PASS', 'dbuser1')
+server = os.getenv('DB_HOST')  # Use a default value if the variable is not set
+database = os.getenv('DB_NAME')
+username = os.getenv('DB_USER')
+password = os.getenv('DB_PASS')
 
 def get_db_connection():
     conn_str = f'DRIVER={{ODBC Driver 17 for SQL Server}};SERVER={server};DATABASE={database};UID={username};PWD={password}'
