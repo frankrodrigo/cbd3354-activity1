@@ -71,4 +71,4 @@ def delete_users():
             conn.close()
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)  # Run on all interfaces
+    app.run(host='0.0.0.0', port=5000) 
