@@ -29,7 +29,7 @@ This project is a containerized web application featuring a Python Flask backend
 ├── README.md                # Project documentation
 └── docker-compose.yml       # Docker Compose configuration for local development
 
-
+```
 ## **Setup Instructions**
 
 ### **Prerequisites**
@@ -49,7 +49,7 @@ Ensure you have the following installed:
 2. **Build and run using Docker Compose:**
     ```bash
     docker-compose up --build
-
+    ```
     The frontend will be accessible at http://localhost, and the backend API will be running on port 5000.
 
 ## **Kubernetes Deployment**
