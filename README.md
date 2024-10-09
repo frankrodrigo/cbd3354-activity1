@@ -13,6 +13,8 @@ This project is a containerized web application featuring a Python Flask backend
 - Secure management of credentials using Kubernetes secrets
 
 ## **Project Structure**
+
+```bash
 ├── backend/                 # Python Flask application
 │   └── app.py               # Main Flask application file
 │   └── Dockerfile           # Dockerfile for backend
