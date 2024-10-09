@@ -45,7 +45,7 @@ Ensure you have the following installed:
    cd cbd3354-activity1
 
 2. **Build and run using Docker Compose:**
-
+    ```bash
     docker-compose up --build
 
     The frontend will be accessible at http://localhost, and the backend API will be running on port 5000.
@@ -53,18 +53,18 @@ Ensure you have the following installed:
 ## **Kubernetes Deployment**
 
 1. **Build and push Docker images to a container registry:**
-
+    ```bash
     docker build -t gcr.io/[project-id]/frontend:latest ./frontend
     docker build -t gcr.io/[project-id]/backend:latest ./backend
     docker push gcr.io/[project-id]/frontend:latest
     docker push gcr.io/[project-id]/backend:latest
 
 2. **Deploy to Google Kubernetes Engine:**
-
+    ```bash
     kubectl apply -f ./kubernetes/deployment.yaml
     kubectl apply -f ./kubernetes/service.yaml
     kubectl apply -f ./kubernetes/secrets.yaml
 
 2. **Access the application via the load balancer IP provided by GKE.**
-
+    ```bash
     kubectl get services
